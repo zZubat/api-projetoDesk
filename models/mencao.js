@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      MENCOE.belongsToMany(models.ALUNO,{
+      MENCAO.belongsToMany(models.ALUNO,{
         through: 'ALUNOMC',
-        as: 'ALUNOs',
-        foreignKey: 'IDALUNO'
+        as: 'ALUNOMCs',
+        foreignKey: 'IDMENCAO'
       });
     }
   };
