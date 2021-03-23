@@ -1,22 +1,20 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('AlunoCursos', {
-      id: {
+    await queryInterface.createTable('AlunoCursoMencao', {
+      ALUNOId: {
         allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      IDALUNO: {
         type: Sequelize.INTEGER,
-        references: { model: 'ALUNOs', key: 'id' },
-        onDelete: 'CASCADE',
-        allowNull: false
+        references: { model: 'ALUNO', key: 'id' },
       },
-      IDCURSO: {
+      CURSOSId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'CURSOS', key: 'id' },
+      },
+      IDMENCAO: {
+        type: Sequelize.INTEGER,
+        references: { model: 'MENCAO', key: 'id' },
         onDelete: 'CASCADE',
         allowNull: false
       },
@@ -29,8 +27,12 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+    return queryInterface.addConstraint('AlunoCursoMencao', ['ALUNOId', 'CURSOSId'], {
+      type: 'primary key',
+      name: 'pk_AlunoCursoMencao'
+    });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('AlunoCursos');
+    await queryInterface.dropTable('AlunoCursoMencao');
   }
 };
