@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { CURSOS, ALUNO } = require('../models');
 
-router.get('/cursos', async (req,res)=>{
+router.get('/', async (req,res)=>{
     const tarefas = await Tarefa.findAll({
         include: [
             {

@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
-    queryInterface.addConstraint('AlunoCursoMencao', { fields: ['ALUNOId', 'CURSOSId'], type: 'primary key', name: 'pk_AlunoCursoMencao' });
+    await queryInterface.addConstraint('AlunoCursoMencao', { fields: ['ALUNOId', 'CURSOSId'], type: 'primary key', name: 'pk_AlunoCursoMencao' });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('AlunoCursoMencao');
