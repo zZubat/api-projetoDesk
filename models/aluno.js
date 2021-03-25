@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'ALUNO',
+    freezeTableName: true,
   });
   return ALUNO;
 };

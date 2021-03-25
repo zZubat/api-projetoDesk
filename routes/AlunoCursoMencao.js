@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { MENCAO } = require('../models');
+const { AlunoCursoMencao } = require('../models');
 
 router.get('/', async (req,res) => {
     try{
-        const resultado = await MENCAO.findAll();
+        const resultado = await AlunoCursoMencao.findAll();
         res.send(resultado);
     } catch (error){
         res.send(`Error: ${error}`);
@@ -13,7 +13,7 @@ router.get('/', async (req,res) => {
 
 router.get('/:id', async (req, res) => {
     try{
-        const resultado = await MENCAO.findAll({
+        const resultado = await AlunoCursoMencao.findAll({
             where:{
                 id: req.params.id
             }
@@ -27,8 +27,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const resultado = await MENCAO.create(req.body);
-        res.send(`Menção cadastrado com sucesso, com ID: ${resultado.id}`);
+        const resultado = await AlunoCursoMencao.create(req.body);
+        res.send(` cadastrado com sucesso`);
     } catch (error) {
         res.send(`Error: ${error}`);
     }
@@ -36,12 +36,12 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const resultado = await MENCAO.update(req.body, {
+        const resultado = await AlunoCursoMencao.update(req.body, {
             where:{
                 id: req.params.id
             }
         });
-        res.send('Menção atualizado com sucesso');
+        res.send(' atualizado com sucesso');
     } catch (error) {
         res.send(`Error: ${error}`);
     }
@@ -49,12 +49,12 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const resultado = await MENCAO.destroy({
+        const resultado = await AlunoCursoMencao.destroy({
             where:{
                 id: req.params.id
             }
         })
-        res.send('Menção removido com sucesso');
+        res.send(' removido com sucesso');
     } catch (error) {
         res.send(`Error: ${error}`);
     }

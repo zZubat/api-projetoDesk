@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       CURSOS.belongsToMany(models.ALUNO,{
         through: 'AlunoCursoMencao',
         as: 'STUDENTS',
-        foreignKey: 'IDCURSO'
+        foreignKey: 'CURSOSId'
       });
     }
   };
@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'CURSOS',
+    freezeTableName: true,
   });
   return CURSOS;
 };

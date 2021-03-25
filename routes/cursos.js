@@ -1,19 +1,15 @@
 const { Router } = require('express');
 const express = require('express');
 const router = express.Router();
-const { CURSOS, ALUNO } = require('../models');
+const { CURSOS } = require('../models');
 
-router.get('/', async (req,res)=>{
-    const tarefas = await Tarefa.findAll({
-        include: [
-            {
-                model: User,
-                as: "ALUNOs",
-                through: { attributes: [] }
-            }
-        ]
-    });
-    res.json(tarefas); 
+router.get('/', async (req,res) => {
+    try{
+        const resultado = await CURSOS.findAll();
+        res.send(resultado);
+    } catch (error){
+        res.send(`Error: ${error}`);
+    }
 });
 
 router.get('/:id', async (req, res) => {
